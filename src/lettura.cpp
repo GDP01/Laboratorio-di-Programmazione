@@ -1,5 +1,3 @@
-#ifndef LETTURA_H
-#define LETTURA_H
 #include "lettura.h"
 
 lettura::lettura()
@@ -34,4 +32,3 @@ double lettura::get_roll_a()
 {
     return roll_a;
 }
-#endif

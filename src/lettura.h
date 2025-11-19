@@ -1,3 +1,6 @@
+#ifndef LETTURA_H
+#define LETTURA_H
+
 class lettura
 {
     private:
@@ -14,3 +17,4 @@ class lettura
     double get_roll_v();
     double get_roll_a();
 };
+#endif

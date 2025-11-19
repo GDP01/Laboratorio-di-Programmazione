@@ -1,5 +1,5 @@
-#ifndef LETTURA_H
-#define LETTURA_H
+#ifndef MISURA_H
+#define MISURA_H
 #include "lettura.h"
 
 const int MISURA_LENGTH = 17;
