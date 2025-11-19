@@ -1,52 +1,96 @@
 #include "InertialDriver.h"
 #include <iostream>
+#include <stdexcept>
 
+using namespace std;
+
+// Costruttore
 InertialDriver::InertialDriver() 
-    : measureBuffer(BUFFER_DIM), front(0), back(0), count(0) {}
+    : measureBuffer(BUFFER_DIM), front(0), back(0), count(0) 
+{
+    // Inizializziamo il buffer con misure azero
+    for (int i = 0; i < BUFFER_DIM; i++) {
+        measureBuffer[i] = misura(); 
+    }
+}
 
-void InertialDriver::push_back(const misura& m) {
+// push_back - aggiunge una misura al buffer (con sovrascrittura se pieno)
+void InertialDriver::push_back(const misura& m) 
+{
     if (count < BUFFER_DIM) {
+        // Buffer non ancora pieno
         measureBuffer[back] = m;
         back = (back + 1) % BUFFER_DIM;
         count++;
     } else {
-        // Buffer pieno - sovrascrivi la più vecchia
+        // Buffer pieno - sovrascrivi la misura più vecchia (politica circolare)
         measureBuffer[front] = m;
         front = (front + 1) % BUFFER_DIM;
-        back = front;  // Mantieni buffer pieno
+        back = front; // Mantieni il buffer pieno
     }
 }
 
-misura InertialDriver::pop_front() {
+// pop_front - restituisce e rimuove la misura più vecchia
+misura InertialDriver::pop_front() 
+{
     if (count == 0) {
-        throw std::runtime_error("Buffer vuoto");
+        throw runtime_error("Buffer vuoto - nessuna misura da estrarre");
     }
     
-    misura result = measureBuffer[front];
+    misura oldest = measureBuffer[front];
     front = (front + 1) % BUFFER_DIM;
     count--;
-    return result;
-}
-
-void InertialDriver::clear_buffer() {
-    front = back = count = 0;
-}
-
-lettura InertialDriver::get_reading(int sensor_index) const {
-    if (count == 0) throw std::runtime_error("Nessuna misura disponibile");
-    if (sensor_index < 0 || sensor_index >= 17) throw std::out_of_range("Indice sensore non valido");
     
-    // La misura più recente è all'indice (back - 1) mod BUFFER_DIM
-    int latest_index = (back == 0) ? BUFFER_DIM - 1 : back - 1;
-    return measureBuffer[latest_index][sensor_index];
+    return oldest;
 }
 
-std::ostream& operator<<(std::ostream& os, const InertialDriver& driver) {
-    if (driver.count == 0) {
-        os << "Nessuna misura disponibile";
-    } else {
-        int latest_index = (driver.back == 0) ? BUFFER_DIM - 1 : driver.back - 1;
-        os << driver.measureBuffer[latest_index];
+// clear_buffer - elimina tutte le misure senza restituirle
+void InertialDriver::clear_buffer() 
+{
+    front = 0;
+    back = 0;
+    count = 0;
+}
+
+// get_reading - restituisce la lettura di un sensore dalla misura più recente
+lettura InertialDriver::get_reading(int sensor_index) const 
+{
+    if (count == 0) {
+        throw runtime_error("Nessuna misura disponibile nel buffer");
     }
+    
+    if (sensor_index < 0 || sensor_index >= MISURA_LENGTH) {
+        throw out_of_range("Indice sensore non valido. Deve essere tra 0 e 16");
+    }
+    
+    // Calcola l'indice della misura più recente
+    // La misura più recente è alla posizione (back - 1) in modo circolare
+    int latest_index = (back == 0) ? BUFFER_DIM - 1 : back - 1;
+    
+    return measureBuffer[latest_index].mis[sensor_index];
+}
+
+// Overload dell'operatore << per stampare l'ultima misura
+ostream& operator<<(ostream& os, const InertialDriver& driver) 
+{
+    if (driver.count == 0) {
+        os << "Nessuna misura disponibile nel buffer";
+        return os;
+    }
+    
+    // Trova l'ultima misura
+    int latest_index = (driver.back == 0) ? BUFFER_DIM - 1 : driver.back - 1;
+    const misura& latest = driver.measureBuffer[latest_index];
+    
+    os << "=== ULTIMA MISURA (17 sensori) ===" << endl;
+    for (int i = 0; i < MISURA_LENGTH; i++) {
+        os << "Sensore " << i << ": " 
+           << "Yaw(v=" << latest.mis[i].get_yaw_v() << ",a=" << latest.mis[i].get_yaw_a() << ") "
+           << "Pitch(v=" << latest.mis[i].get_pitch_v() << ",a=" << latest.mis[i].get_pitch_a() << ") "
+           << "Roll(v=" << latest.mis[i].get_roll_v() << ",a=" << latest.mis[i].get_roll_a() << ")" 
+           << endl;
+    }
+    os << "=================================";
+    
     return os;
 }
