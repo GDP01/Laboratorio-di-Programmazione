@@ -14,27 +14,27 @@ InertialDriver::InertialDriver()
     }
 }
 
-// push_back - aggiunge una misura al buffer (con sovrascrittura se pieno)
+// push_back aggiunge una misura al buffer (con sovrascrittura se pieno)
 void InertialDriver::push_back(const misura& m) 
 {
     if (count < BUFFER_DIM) {
-        // Buffer non ancora pieno
+        // Buffer non pieno
         measureBuffer[back] = m;
         back = (back + 1) % BUFFER_DIM;
         count++;
     } else {
-        // Buffer pieno - sovrascrivi la misura più vecchia (politica circolare)
+        // Buffer pieno sovrascrivire la misura più vecchia
         measureBuffer[front] = m;
         front = (front + 1) % BUFFER_DIM;
-        back = front; // Mantieni il buffer pieno
+        back = front; // buffer rimane pieno
     }
 }
 
-// pop_front - restituisce e rimuove la misura più vecchia
+// pop_front restituisce e rimuove la misura più vecchia
 misura InertialDriver::pop_front() 
 {
     if (count == 0) {
-        throw runtime_error("Buffer vuoto - nessuna misura da estrarre");
+        throw runtime_error("Buffer vuoto");
     }
     
     misura oldest = measureBuffer[front];
@@ -44,7 +44,7 @@ misura InertialDriver::pop_front()
     return oldest;
 }
 
-// clear_buffer - elimina tutte le misure senza restituirle
+// clear_buffer elimina tutte le misure senza restituirle
 void InertialDriver::clear_buffer() 
 {
     front = 0;
@@ -52,7 +52,7 @@ void InertialDriver::clear_buffer()
     count = 0;
 }
 
-// get_reading - restituisce la lettura di un sensore dalla misura più recente
+// get_reading restituisce la lettura di un sensore dalla misura più recente
 lettura InertialDriver::get_reading(int sensor_index) const 
 {
     if (count == 0) {
@@ -64,7 +64,7 @@ lettura InertialDriver::get_reading(int sensor_index) const
     }
     
     // Calcola l'indice della misura più recente
-    // La misura più recente è alla posizione (back - 1) in modo circolare
+    // La misura più recente è alla posizione (back - 1)
     int latest_index = (back == 0) ? BUFFER_DIM - 1 : back - 1;
     
     return measureBuffer[latest_index].mis[sensor_index];
