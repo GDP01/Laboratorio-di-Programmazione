@@ -1,6 +1,7 @@
 #include "MyVector.h"
 #include "misura.h"
 #include <iostream>
+
 const int BUFFER_DIM = 200;
 
 class InertialDriver
