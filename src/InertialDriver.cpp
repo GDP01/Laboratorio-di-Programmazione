@@ -14,7 +14,7 @@ InertialDriver::InertialDriver()
     }
 }
 
-// push_back aggiunge una misura al buffer (con sovrascrittura se pieno)
+// push_back aggiunge una misura al buffer 
 void InertialDriver::push_back(const misura& m) 
 {
     if (count < BUFFER_DIM) {
@@ -78,11 +78,11 @@ ostream& operator<<(ostream& os, const InertialDriver& driver)
         return os;
     }
     
-    // Trova l'ultima misura
+    // Trova ultima misura
     int latest_index = (driver.back == 0) ? BUFFER_DIM - 1 : driver.back - 1;
     const misura& latest = driver.measureBuffer[latest_index];
     
-    os << "=== ULTIMA MISURA (17 sensori) ===" << endl;
+    os << "= ULTIMA MISURA (17 sensori) =" << endl;
     for (int i = 0; i < MISURA_LENGTH; i++) {
         os << "Sensore " << i << ": " 
            << "Yaw(v=" << latest.mis[i].get_yaw_v() << ",a=" << latest.mis[i].get_yaw_a() << ") "
@@ -90,7 +90,7 @@ ostream& operator<<(ostream& os, const InertialDriver& driver)
            << "Roll(v=" << latest.mis[i].get_roll_v() << ",a=" << latest.mis[i].get_roll_a() << ")" 
            << endl;
     }
-    os << "=================================";
+    os << " =";
     
     return os;
 }
