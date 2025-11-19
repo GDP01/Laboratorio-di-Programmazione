@@ -19,5 +19,5 @@ class InertialDriver
         misura pop_front();
         void clear_buffer();
         lettura get_reading(int sensor_index) const;
-        std::ostream& operator<<(std::ostream& os, const InertialDriver& driver);
+        friend std::ostream& operator<<(std::ostream& os, const InertialDriver& driver);
 };
