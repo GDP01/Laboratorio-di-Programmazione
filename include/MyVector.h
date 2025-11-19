@@ -1,30 +1,40 @@
-class MyVector{
+#ifndef MYVECTOR_H
+#define MYVECTOR_H
+
+template <typename T>
+class MyVector {
     class Invalid{};
 
-    public:
-        MyVector(int dimension);
-        ~MyVector();
+public:
+    MyVector(int dimension);
+    ~MyVector();
 
-        double& operator[](int index);
-        double operator[](int index) const;
+    T& operator[](int index);
+    T operator[](int index) const;
 
-        void safe_set(int index, double value);
-        double safe_get(int index) const;
+    void safe_set(int index, const T& value);
+    T safe_get(int index) const;
         
-        double at(int index) const;
-        double& at(int index);
+    T at(int index) const;
+    T& at(int index);
 
-        void push_back(double value);
-        double pop_back();
+    void push_back(const T& value);
+    T pop_back();
 
-        void reserve(int n);
+    void reserve(int n);
 
-        int size() const { return sz; };
-    private:
-        double *array = nullptr;
-        int true_sz;
-        int reserved;
-        int sz;
-        void resize(int dim);
-	    double& safe_get_reference(int position);
+    int size() const { return sz; };
+
+private:
+    T *array = nullptr;
+    int true_sz;
+    int reserved;
+    int sz;
+
+    void resize(int dim);
+    T& safe_get_reference(int position);
 };
+
+typedef MyVector<double> MyVector;
+
+#endif
