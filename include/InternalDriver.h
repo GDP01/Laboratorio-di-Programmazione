@@ -1,6 +1,6 @@
-#include "MyVector.cpp"
-#include "misura.cpp"
-#include 
+#include "MyVector.h"
+#include "misura.h"
+#include <iostream>
 const int BUFFER_DIM = 200;
 
 class InertialDriver
@@ -8,12 +8,19 @@ class InertialDriver
     private:
     //vector<MyVector> arr = new vector<MyVector>[BUFFER_DIM];
 
-    MyVector[]* measureBuffer;
+    MyVector<misura> measureBuffer; 
+    int front;
+    int back;
+    int count;
 
     public:
-    void pop_front();
+    InertialDriver(); //costruttore
+    void push_back(const misura& m);
+    misura pop_front();
     void clear_buffer();
+    lettura get_reading(int sensor_index) const;
 };
+#endif
 
 //La funzione push_back che accetta un array stile C contenente una misura e la
 //memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno);
