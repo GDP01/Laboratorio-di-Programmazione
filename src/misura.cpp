@@ -1,3 +1,5 @@
+#ifndef MISURA_H
+#define MISURA_H
 #include "misura.h"
 
 misura::misura(lettura let0, lettura let1, lettura let2, lettura let3, lettura let4, lettura let5, lettura let6, lettura let7, lettura let8, lettura let9, lettura let10, lettura let11, lettura let12, lettura let13, lettura let14, lettura let15, lettura let16)
@@ -21,23 +23,5 @@ misura::misura(lettura let0, lettura let1, lettura let2, lettura let3, lettura l
         mis[16] = let16;
     }
 
-misura::misura()
-{
-    mis[0] = lettura();
-    mis[1] = lettura();
-    mis[2] = lettura();
-    mis[3] = lettura();
-    mis[4] = lettura();
-    mis[5] = lettura();
-    mis[6] = lettura();
-    mis[7] = lettura();
-    mis[8] = lettura();
-    mis[9] = lettura();
-    mis[10] = lettura();
-    mis[11] = lettura();
-    mis[12] = lettura();
-    mis[13] = lettura();
-    mis[14] = lettura();
-    mis[15] = lettura();
-    mis[16] = lettura();
-}
+    misura::misura(){}
+#endif

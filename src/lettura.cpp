@@ -1,19 +1,14 @@
+#ifndef LETTURA_H
+#define LETTURA_H
 #include "lettura.h"
 
 lettura::lettura()
-{
-    yaw_v, yaw_a, pitch_v, pitch_a, roll_v, roll_a = 0;
-}
+: yaw_v(0.0), yaw_a(0.0), pitch_v(0.0), pitch_a(0.0), roll_v(0.0), roll_a(0.0)
+{}
 
-lettura::lettura(double yaw_v, double yaw_a, double pitch_v, double pitch_a, double roll_v, double roll_a)
-{
-    yaw_v = yaw_v;
-    yaw_a = yaw_a;
-    pitch_v = pitch_v;
-    pitch_a = pitch_a;
-    roll_v = roll_v;
-    roll_a = roll_a;
-}
+lettura::lettura(double yv, double ya, double pv, double pa, double rv, double ra)
+: yaw_v(yv), yaw_a(ya), pitch_v(pv), pitch_a(pa), roll_v(rv), roll_a(ra)
+{}
 
 double lettura::get_yaw_v()
 {
@@ -39,3 +34,4 @@ double lettura::get_roll_a()
 {
     return roll_a;
 }
+#endif
