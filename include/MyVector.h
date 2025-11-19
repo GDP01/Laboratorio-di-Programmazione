@@ -35,6 +35,4 @@ private:
     T& safe_get_reference(int position);
 };
 
-typedef MyVector<double> MyVector;
-
 #endif
