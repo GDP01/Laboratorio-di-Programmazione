@@ -1,5 +1,5 @@
 #include "MyVector.h"
-#include <algorithm>    // per std::copy
+#include <algorithm>
 
 //===== Costruttore =====//
 template <typename T>
@@ -51,7 +51,7 @@ void MyVector<T>::resize(int dim) {
     std::copy(array, array + sz, t);
     delete[] array;
     array = t;
-    true_sz = dim;   // importante: aggiorna la capacità reale
+    true_sz = dim;
 }
 
 //===== Overload operatore [] =====//
