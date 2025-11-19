@@ -1,5 +1,6 @@
 #include "MyVector.cpp"
-#include <vector>
+#include "misura.cpp"
+#include 
 const int BUFFER_DIM = 200;
 
 class InertialDriver
@@ -10,19 +11,8 @@ class InertialDriver
     MyVector[]* measureBuffer;
 
     public:
-    void push_back()
-    {
-
-    }
-    void pop_front()
-    {
-
-    }
-    void clear_buffer()
-    {
-
-    }
-
+    void pop_front();
+    void clear_buffer();
 };
 
 //La funzione push_back che accetta un array stile C contenente una misura e la
