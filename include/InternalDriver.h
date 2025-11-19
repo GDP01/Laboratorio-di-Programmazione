@@ -12,7 +12,7 @@ class InertialDriver
         int count;
 
     public:
-        InertialDriver(); //costruttore
+        InertialDriver();
         ~InertialDriver();
         void push_back(const misura& m);
         misura pop_front();
