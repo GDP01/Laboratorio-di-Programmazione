@@ -1,6 +1,7 @@
 #include "MyVector.h"
 #include "misura.h"
 #include <iostream>
+#include <stdexcept>
 
 const int BUFFER_DIM = 200;
 
@@ -15,9 +16,13 @@ class InertialDriver
     public:
         InertialDriver();
         ~InertialDriver();
+
         void push_back(const misura& m);
         misura pop_front();
         void clear_buffer();
         lettura get_reading(int sensor_index) const;
-        friend std::ostream& operator<<(std::ostream& os, const InertialDriver& driver);
+        
+        std::ostream& print(std::ostream& os) const;
 };
+
+std::ostream& operator<<(std::ostream& os, const InertialDriver& driver);
