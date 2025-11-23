@@ -1,4 +1,4 @@
-#include "MyVector.h"
+#include "../include/MyVector.h"
 #include <iostream>
 
 void arrayPrint(const double a[], int length, int size) {
