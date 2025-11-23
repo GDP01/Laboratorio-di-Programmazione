@@ -1,4 +1,4 @@
-#include "InertialDriver.h"
+#include "../include/InertialDriver.h"
 #include <iostream>
 #include <stdexcept>
 
