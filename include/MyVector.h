@@ -1,6 +1,8 @@
 #ifndef MYVECTOR_H
 #define MYVECTOR_H
 
+#include "../include/misura.h"
+
 template <typename T>
 class MyVector {
     class Invalid{};
@@ -35,4 +37,9 @@ private:
     T& safe_get_reference(int position);
 };
 
+// Istanziazioni esplicite per i tipi usati
+template class MyVector<double>;
+template class MyVector<misura>;
+
+#endif
 #endif
