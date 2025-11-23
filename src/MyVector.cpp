@@ -107,6 +107,3 @@ void MyVector<T>::reserve(int n) {
     if (true_sz < n) resize(n);
     reserved = n;
 }
-
-// ===== Istanziazione esplicita per double ===== //
-template class MyVector<double>;
