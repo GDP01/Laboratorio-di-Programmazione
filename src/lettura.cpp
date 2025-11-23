@@ -1,4 +1,4 @@
-#include "lettura.h"
+#include "../include/lettura.h"
 
 lettura::lettura()
 : yaw_v(0.0), yaw_a(0.0), pitch_v(0.0), pitch_a(0.0), roll_v(0.0), roll_a(0.0)
@@ -31,4 +31,5 @@ double lettura::get_roll_v()
 double lettura::get_roll_a()
 {
     return roll_a;
+
 }
