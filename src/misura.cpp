@@ -1,4 +1,4 @@
-#include "misura.h"
+#include "../include/misura.h"
 
 misura::misura(lettura let0, lettura let1, lettura let2, lettura let3, lettura let4, lettura let5, lettura let6, lettura let7, lettura let8, lettura let9, lettura let10, lettura let11, lettura let12, lettura let13, lettura let14, lettura let15, lettura let16)
     {
@@ -20,5 +20,6 @@ misura::misura(lettura let0, lettura let1, lettura let2, lettura let3, lettura l
         mis[15] = let15;
         mis[16] = let16;
     }
+
 
     misura::misura(){}
