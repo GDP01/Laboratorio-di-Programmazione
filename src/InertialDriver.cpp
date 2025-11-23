@@ -1,8 +1,4 @@
 #include "../include/InertialDriver.h"
-#include <iostream>
-#include <stdexcept>
-
-using namespace std;
 
 // Costruttore
 InertialDriver::InertialDriver() 
@@ -13,6 +9,9 @@ InertialDriver::InertialDriver()
         measureBuffer[i] = misura(); 
     }
 }
+
+// Distruttore
+InertialDriver::~InertialDriver() = default;
 
 // push_back aggiunge una misura al buffer 
 void InertialDriver::push_back(const misura& m) 
@@ -34,7 +33,7 @@ void InertialDriver::push_back(const misura& m)
 misura InertialDriver::pop_front() 
 {
     if (count == 0) {
-        throw runtime_error("Buffer vuoto");
+        throw std::runtime_error("Buffer vuoto");
     }
     
     misura oldest = measureBuffer[front];
@@ -56,11 +55,11 @@ void InertialDriver::clear_buffer()
 lettura InertialDriver::get_reading(int sensor_index) const 
 {
     if (count == 0) {
-        throw runtime_error("Nessuna misura disponibile nel buffer");
+        throw std::runtime_error("Nessuna misura disponibile nel buffer");
     }
     
     if (sensor_index < 0 || sensor_index >= MISURA_LENGTH) {
-        throw out_of_range("Indice sensore non valido. Deve essere tra 0 e 16");
+        throw std::out_of_range("Indice sensore non valido. Deve essere tra 0 e 16");
     }
     
     // Calcola l'indice della misura più recente
@@ -71,7 +70,7 @@ lettura InertialDriver::get_reading(int sensor_index) const
 }
 
 // Overload dell'operatore << per stampare l'ultima misura
-ostream& operator<<(ostream& os, const InertialDriver& driver) 
+std::ostream& operator<<(std::ostream& os, const InertialDriver& driver) 
 {
     if (driver.count == 0) {
         os << "Nessuna misura disponibile nel buffer";
@@ -82,13 +81,13 @@ ostream& operator<<(ostream& os, const InertialDriver& driver)
     int latest_index = (driver.back == 0) ? BUFFER_DIM - 1 : driver.back - 1;
     const misura& latest = driver.measureBuffer[latest_index];
     
-    os << "= ULTIMA MISURA (17 sensori) =" << endl;
+    os << "= ULTIMA MISURA (17 sensori) =" << std::endl;
     for (int i = 0; i < MISURA_LENGTH; i++) {
         os << "Sensore " << i << ": " 
            << "Yaw(v=" << latest.mis[i].get_yaw_v() << ",a=" << latest.mis[i].get_yaw_a() << ") "
            << "Pitch(v=" << latest.mis[i].get_pitch_v() << ",a=" << latest.mis[i].get_pitch_a() << ") "
            << "Roll(v=" << latest.mis[i].get_roll_v() << ",a=" << latest.mis[i].get_roll_a() << ")" 
-           << endl;
+           << std::endl;
     }
     os << " =";
     
