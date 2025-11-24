@@ -11,4 +11,4 @@ Youssef El Ouizi
 • Adattamento della classe MyVector con i template: Giacomo Dal Poz  
 • Implementazione della classe InertialDrive: Youssef El Ouizi, Giacomo Dal Poz  
 • Implementazione del main tester: Giacomo Dal Poz  
-• Revisione finale e correzione dettagli: Leonardo Boerci, Giacomo Dal Poz  
+• Revisione finale e correzione dettagli: Leonardo Boerci, Giacomo Dal Poz, Youssef El Ouizi  
