@@ -42,4 +42,3 @@ template class MyVector<double>;
 template class MyVector<misura>;
 
 #endif
-#endif
