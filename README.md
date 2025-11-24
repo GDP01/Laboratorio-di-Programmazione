@@ -1,4 +1,4 @@
-# Laboratorio-di-Programmazione
+# Laboratorio di Programmazione
 
 Progetto intermedio del gruppo C--
 
