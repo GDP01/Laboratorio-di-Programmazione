@@ -10,11 +10,12 @@ class lettura
     lettura(double yaw_v, double yaw_a, double pitch_v, double pitch_a, double roll_v, double roll_a);
     lettura();
 
-    double get_yaw_v();
-    double get_yaw_a();
-    double get_pitch_v();
-    double get_pitch_a();
-    double get_roll_v();
-    double get_roll_a();
+    double get_yaw_v() const;
+    double get_yaw_a() const;
+    double get_pitch_v() const;
+    double get_pitch_a() const;
+    double get_roll_v() const;
+    double get_roll_a() const;
 };
+
 #endif
