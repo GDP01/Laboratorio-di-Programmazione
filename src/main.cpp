@@ -91,8 +91,7 @@ int main() {
     // 5) pop_front su buffer vuoto
     std::cout << "\n5) Test pop_front su buffer vuoto" << std::endl;
     try {
-        misura px = driver.pop_front();
-        (void)px;
+        driver.pop_front();
         std::cout << "Errore: pop_front non ha lanciato eccezione!" << std::endl;
     }
     catch (const std::exception& e) {
@@ -123,8 +122,7 @@ int main() {
     driver.clear_buffer();
 
     try {
-        misura py = driver.pop_front();
-        (void)py;
+        driver.pop_front();
         std::cout << "ERRORE: niente eccezione dopo clear_buffer!" << std::endl;
     }
     catch (const std::exception& e) {
@@ -137,8 +135,7 @@ int main() {
 
     try {
         std::cout << "Chiamo get_reading(-1)..." << std::endl;
-        lettura lneg = driver.get_reading(-1);
-        (void)lneg;
+        driver.get_reading(-1);
         std::cout << "ERRORE: niente eccezione!" << std::endl;
     }
     catch (const std::exception& e) {
@@ -147,8 +144,7 @@ int main() {
 
     try {
         std::cout << "Chiamo get_reading(17)..." << std::endl;
-        lettura l17 = driver.get_reading(17);
-        (void)l17;
+        driver.get_reading(17);
         std::cout << "ERRORE: niente eccezione!" << std::endl;
     }
     catch (const std::exception& e) {
