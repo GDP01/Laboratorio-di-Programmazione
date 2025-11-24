@@ -5,8 +5,7 @@
 
 const int BUFFER_DIM = 200;
 
-class InertialDriver
-{
+class InertialDriver {
     private:
         MyVector<misura> measureBuffer; 
         int front;

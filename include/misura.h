@@ -4,8 +4,7 @@
 
 const int MISURA_LENGTH = 17;
 
-class misura
-{
+class misura {
     public:
     lettura mis[MISURA_LENGTH];
 
