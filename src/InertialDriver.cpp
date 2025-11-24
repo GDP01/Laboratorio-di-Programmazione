@@ -9,7 +9,7 @@ InertialDriver::InertialDriver()
     }
 }
 
-// Distruttore
+// Distruttore di default
 InertialDriver::~InertialDriver() = default;
 
 // push_back aggiunge una misura al buffer 
@@ -20,7 +20,7 @@ void InertialDriver::push_back(const misura& m) {
         back = (back + 1) % BUFFER_DIM;
         count++;
     } else {
-        // Buffer pieno sovrascrivire la misura più vecchia
+        // Buffer pieno => sovrascrive la misura più vecchia
         measureBuffer[front] = m;
         front = (front + 1) % BUFFER_DIM;
         back = front; // buffer rimane pieno
@@ -54,7 +54,7 @@ lettura InertialDriver::get_reading(int sensor_index) const {
     }
     
     if (sensor_index < 0 || sensor_index >= MISURA_LENGTH) {
-        throw std::out_of_range("Indice sensore non valido. Deve essere tra 0 e 16");
+        throw std::out_of_range("Indice sensore non valido. Deve essere compreso tra 0 e 16");
     }
     
     // Calcola l'indice della misura più recente
