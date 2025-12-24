@@ -1,0 +1,18 @@
+Il file Highway.txt contenente righe codificate nel modo
+seguente:
+<distanza in km> <V|S per Varco o Svincolo>
+
+Questo file è pensato per essere fornito al sistema come input, perciò si suppone che sia scritto
+a mano.
+La descrizione deve soddisfare i seguenti vincoli:
+● ciascun varco e ciascuno svincolo è identificato da un numero univoco che è assegnato
+automaticamente dal sistema in ordine crescente di distanza dall’origine - le numerazioni
+di varchi e svincoli sono indipendenti (cioè saranno presenti il varco 1 e lo svincolo 1);
+● devono essere presenti almeno due varchi;
+● deve essere presente almeno uno svincolo precedente al primo varco e almeno uno
+svincolo successivo all’ultimo varco;
+● la distanza minima tra uno svincolo e un varco è di 1 km;
+● varchi e svincoli possono essere elencati in qualsiasi ordine (non sono necessariamente
+ordinati nel file).
+Descrizioni che non soddisfano i vincoli elencati devono essere rifiutati dal sistema, che quindi
+può uscire con un errore in caso di file non conforme.
