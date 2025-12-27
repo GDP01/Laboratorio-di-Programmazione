@@ -103,8 +103,7 @@ public:
     // Valida i vincoli richiesti (può lanciare HighwayError)
     void validate() const;
 
-    // Helper function di parsing:
-    // Converte 'V'/'S' in PointType (lancia HighwayError se non valido)
+    // Helper function di parsing: converte 'V'/'S' in PointType (lancia HighwayError se non valido)
     static PointType parseTypeChar(char c);
 
 private:
@@ -114,8 +113,7 @@ private:
     std::vector<Interchange> interchanges_; // Svincoli ordinati per km crescente, mantenendo l'id coerente
     std::vector<Point> pointsSorted_; // ordinamento con merge di gates e interchanges
 
-    // Funzioni intererne di supporto:
-    // Legge le righe del file Highway.txt e produce un vettore di Point non ancora numerati (cioè con id=0)
+    // Funzioni intererne di supporto: legge le righe del file Highway.txt e produce un vettore di Point non ancora numerati (cioè con id=0)
     static std::vector<Point> readRawPoints(const std::string& highwayFilePath);
 
     // Ordina e assegna ID separati per tipo, poi popola gates/interchanges/pointsSorted
