@@ -34,12 +34,10 @@ int Simulator::pickRandomExit(const Highway& highway, int entryId){
 
 //TODO: finire simulaRun
 void Simulator::simulaRun(const std::string& fileRuns, const std::string& filePassaggi, Highway& highway){
-    std::ifstream inCorse(fileRuns);
-    std::ifstream inPassaggi(filePassaggi);
     std::ofstream outFile(fileRuns);
 
-    if(!inCorse.is_open() || !inPassaggi.is_open() || !outFile.is_open()){
-        std::cerr << "Errore nell'apertura dei file di input/output." << std::endl;
+    if(!outFile.is_open()){
+        std::cerr << "Errore: impossibile creare il file " << fileRuns << std::endl;
         return;
     }
     double tempoAttuale = 0.0; //istante 0 simulazione
@@ -48,3 +46,28 @@ void Simulator::simulaRun(const std::string& fileRuns, const std::string& filePa
     for(int i = 0; i < veicoliTotali; ++i){
         Vehicle veicolo;
         veicolo.generatoreTarga(gen);
+        veicolo.entryNode = pickRandomEntry(highway)
+        veicolo.exitNode = pickRandomExit(highway, veicolo.entryNode);
+        double kmIn = highway.interchangeKm(veicolo.entryNode);
+        double kmOut = highway.interchangeKm(veicolo.exitNode);
+
+        veicolo.generaProfilo(kmOut-kmIn, gen);
+
+        double gap = generaTimeGap();
+        tempoAttuale += gap;
+        veicolo.startTime = tempoAttuale;
+
+        //Scrittura su Runs.txt
+        outFile << veicolo.targa << " " << veicolo.entryNode << " " << veicolo.exitNode << " " << v.startTime<< " ";
+
+        for(size_t k = 0; k<veicolo.profilo.size(); ++k) {
+            outfile << v.profilo.size[k].speed << " " << veicolo.profilo[k].minuti; 
+            if(k < veicolo.profilo.size()-1) outfile << ", ";
+        }
+        outfile << "\n";
+        calcolaPassaggioVeicolo(veicolo, highway);
+    }
+    outFile.close();
+    std::cout<< "File percorsi completato" << std::endl;
+    scriviFilePassaggi(filePassaggi);
+}
