@@ -2,8 +2,8 @@
 
 
 
-#ifndef TUTOR_H
-#define TUTOR_H
+#ifndef VEICOLO_H
+#define VEICOLO_H
 #include <iostream>
 #include <ctime>
 #include <vector>
@@ -16,7 +16,7 @@ static const int MAX_SPEED=190; //km/h
 static const int MIN_SPEED=80;  //km/h
 
 
-class Tutor {
+class Veicolo {
 
 private:
         double entroKm;                                                 //km dall'inizio dell'autostrada di ingresso
@@ -37,9 +37,9 @@ private:
 
 
 public:
-    	Tutor(double e, double u, int a, int b, double t, std::string d);
+    	Veicolo(double e, double u, int a, int b, double t, std::string d);
 
-        virtual ~Tutor() {}
+        virtual ~Veicolo() {}
 
         double getEntroKm() const { return entroKm; }
         double getEscoKm() const { return escoKm; }
@@ -52,6 +52,6 @@ public:
 
 };
 
-std::ostream& operator<<(std::ostream& os, const Tutor& tut);   //overload dell'operatore di output
+std::ostream& operator<<(std::ostream& os, const Veicolo& tut);   //overload dell'operatore di output
 
 #endif
