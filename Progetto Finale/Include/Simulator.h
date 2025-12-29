@@ -1,4 +1,4 @@
-//@author : Andrea Vadori
+/*//@author : Andrea Vadori
 
 //Definisce la classe Simulator che gestisce il ciclo di vita della simulazione.
 
@@ -59,4 +59,4 @@ private:
     void scriviFilePassaggi(const std::string& filename);
 };
 #endif
-    
+*/    
