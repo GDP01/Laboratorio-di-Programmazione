@@ -1,4 +1,4 @@
-// @author: Andrea Vadori
+/*// @author: Andrea Vadori
 
 #include "Simulator.h"
 #include "Highway.h"
@@ -71,3 +71,4 @@ void Simulator::simulaRun(const std::string& fileRuns, const std::string& filePa
     std::cout<< "File percorsi completato" << std::endl;
     scriviFilePassaggi(filePassaggi);
 }
+*/
