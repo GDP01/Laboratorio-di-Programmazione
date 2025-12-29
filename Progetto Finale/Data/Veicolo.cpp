@@ -42,9 +42,9 @@ std::vector<std::pair<double, int>> Veicolo::generatoreSpeedG(double e, double u
         distanza-=(double)(speed*tempo)/60.0; 
         if(distance<0)
             tempo+=(double)(distanza*60)/speed; //serve per coprire esattamente la distanza rimanente
-        tut.push_back({tempo, speed});
+        v.push_back({tempo, speed});
     }
-    return tut;
+    return v;
 }
 
 
@@ -59,14 +59,14 @@ Veicolo::Veicolo(double e, double u, int a, int b, double t, std::string d) : en
 }
 
 
-std::ostream& operator<<(std::ostream& os, const Veicolo& tut)        //overload dell'operatore di output
+std::ostream& operator<<(std::ostream& os, const Veicolo& v)        //overload dell'operatore di output
 {
-    os << tut.getTg() << " " << tut.getEntroId() << " " << tut.getEscoId() << " "<< tut.getIngressoS() << " "; //targa, id varco ingresso, id varco uscita, tempo di ingresso
+    os << v.getTg() << " " << v.getEntroId() << " " << v.getEscoId() << " "<< v.getIngressoS() << " "; //targa, id varco ingresso, id varco uscita, tempo di ingresso
     int i=0;
-    while(i<tut.getSpeedG().size())
+    while(i<v.getSpeedG().size())
     {
-        os << tut.getSpeedG()[i].second << " " << v.getSpeedG()[i].first;   //velocita , tempo
-        if(i!=tut.getSpeedG().size()-1)
+        os << v.getSpeedG()[i].second << " " << v.getSpeedG()[i].first;   //velocita , tempo
+        if(i!=v.getSpeedG().size()-1)
             os << ", ";  
         i++;
     }
