@@ -37,10 +37,10 @@ public:
     };
 
     enum class ErrorCode { 
-        FileOpenFailed, // (impossibile aprire il file)
-        ParseError, // (formato riga non valido)
+        FileOpenFailed,
+        ParseError, 
         UnknownType, // (carattere diverso da 'V'/'S')
-        NegativeDistance, // (distanza negativa)
+        NegativeDistance, 
         NotEnoughGates, // (meno di 2 varchi)
         MissingInterchangeBeforeFirstGate,
         MissingInterchangeAfterLastGate,
