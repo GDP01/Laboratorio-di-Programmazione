@@ -52,6 +52,6 @@ public:
 
 };
 
-std::ostream& operator<<(std::ostream& os, const Veicolo& tut);   //overload dell'operatore di output
+std::ostream& operator<<(std::ostream& os, const Veicolo& v);   //overload dell'operatore di output
 
 #endif
