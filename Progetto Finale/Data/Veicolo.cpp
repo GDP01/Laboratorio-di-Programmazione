@@ -3,16 +3,16 @@
 
 
 
-#include "Tutor.h"
+#include "Veicolo.h"
 
 
 
-int Tutor::randomInt(int min, int max)
+int Veicolo::randomInt(int min, int max)
 {
     return min+rand()%(max-min+1);
 }
 
-std::string Tutor::generatoreTg()      //generatore targa casuale
+std::string Veicolo::generatoreTg()      //generatore targa casuale
 {
     std::string tg;
     for(int i=0; i<2; i++)
@@ -31,7 +31,7 @@ std::string Tutor::generatoreTg()      //generatore targa casuale
 }
 
 
-std::vector<std::pair<double, int>> Tutor::generatoreSpeedG(double e, double u)   //generatore speedG(aspetti generali come tempo e velocita)  casuale
+std::vector<std::pair<double, int>> Veicolo::generatoreSpeedG(double e, double u)   //generatore speedG(aspetti generali come tempo e velocita)  casuale
 {
     std::vector<std::pair<double, int>> tut;
     double distanza=u-e; //km
@@ -48,7 +48,7 @@ std::vector<std::pair<double, int>> Tutor::generatoreSpeedG(double e, double u) 
 }
 
 
-Tutor::Tutor(double e, double u, int a, int b, double t, std::string d) : entroKm{e}, escoKm{u}, entroId{a}, escoId{b}, distanza{u-e}, ingressoS{t}, data{d}
+Veicolo::Veicolo(double e, double u, int a, int b, double t, std::string d) : entroKm{e}, escoKm{u}, entroId{a}, escoId{b}, distanza{u-e}, ingressoS{t}, data{d}
 {
     if(entroKm<0 || escoKm<0 || escoKm<entroKm || ingressoS<0 || entroId<0 || escoId<0 || entroId>escoId)   //possibili errori
         throw std::invalid_argument("Errore di entrata o uscita dall'autostrada nel tempo ");
@@ -59,7 +59,7 @@ Tutor::Tutor(double e, double u, int a, int b, double t, std::string d) : entroK
 }
 
 
-std::ostream& operator<<(std::ostream& os, const Tutor& tut)        //overload dell'operatore di output
+std::ostream& operator<<(std::ostream& os, const Veicolo& tut)        //overload dell'operatore di output
 {
     os << tut.getTg() << " " << tut.getEntroId() << " " << tut.getEscoId() << " "<< tut.getIngressoS() << " "; //targa, id varco ingresso, id varco uscita, tempo di ingresso
     int i=0;
