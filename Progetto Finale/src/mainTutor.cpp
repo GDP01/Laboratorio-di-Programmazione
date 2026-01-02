@@ -46,10 +46,10 @@ int main() {
     //Comandi
     std::string comando;
     while (std::cin >> comando) {
-        if (command == "exit") {
+        if (comando == "exit") {
             break;
         } 
-        else if (command == "set_time") {
+        else if (comando == "set_time") {
             std::string inputTempo;
             std::cin >> inputTempo; // Legge l'argomento 
             
