@@ -53,17 +53,17 @@ int main() {
             std::string inputTempo;
             std::cin >> inputTempo; // Legge l'argomento 
             
-            double secondi = parseTimeCommand(inputTempo);
+            double secondi = convertiTempo(inputTempo);
             if (secondi < 0) {
                 std::cout << "Formato tempo non valido." << std::endl;
             } else {
                 tutor.advanceTime(tempoAttuale + secondi, autostrada); //ora faccio incrementale.
             }
         } 
-        else if (command == "stats") {
+        else if (comando == "stats") {
             tutor.printStats(highway);
         } 
-        else if (command == "reset") {
+        else if (comando == "reset") {
             tutor.reset();
         } 
         else {
