@@ -48,5 +48,7 @@ public:
       void reset();
       //Output riepilogo
       void showStats();
+
+      double getTempoAttuale() const { return tempoAttuale; }
 };
 #endif
