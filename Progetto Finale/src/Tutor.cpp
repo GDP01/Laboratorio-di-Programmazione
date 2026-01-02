@@ -16,7 +16,7 @@ void Tutor::reset(){
 
   indice=0;
   tempoAttuale = 0.0;
-  conteggioMulte = 0.0;
+  conteggioMulte = 0;
   sommaVelocita = 0.0;
   conteggioMisurazioni = 0;
   std::cout << "Tutor resettato" << std::endl;
@@ -31,7 +31,7 @@ bool Tutor::init(const std::string& nomeFile){
   storicoTransiti.clear();
   Transito transito; 
   //lettura file -> <varco><targa><tempo>
-  while(file>>transito.idVarco>>transito.targa>>transito.timestamp){
+  while(file >> transito.idVarco >> transito.targa >> transito.timestamp){
       storicoTransiti.push_back(transito);
   }
 file.close();
@@ -40,8 +40,8 @@ return true;
 }
 
 void Tutor::updateTime(double nuovoIstante, const Highway& autostrada){
-  if(nuovoIstante<tempoAttuale){
-    std::cerr<< "Errore: puoi solo andare avanti con il tempo"<< std::endl;
+  if(nuovoIstante < tempoAttuale){
+    std::cerr << "Errore: puoi solo andare avanti con il tempo" << std::endl;
     return;
   }
   while(indice < storicoTransiti.size()){
@@ -53,7 +53,7 @@ void Tutor::updateTime(double nuovoIstante, const Highway& autostrada){
         statisticheVarchi[transitoCorrente.idVarco]++;
 
         auto v = veicoliAttivi.find(transitoCorrente.targa);
-        if (v!= veicoliAttivi.end()){
+        if (v != veicoliAttivi.end()){
           // Già tracciato recupero dati ultimo passaggio
           int idVarcoPrecedente = v->second.idUltimoVarco;
           double tempoPrecedente = v->second.ultimoTempo;
