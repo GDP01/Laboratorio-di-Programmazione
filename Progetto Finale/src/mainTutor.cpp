@@ -57,11 +57,11 @@ int main() {
             if (secondi < 0) {
                 std::cout << "Formato tempo non valido." << std::endl;
             } else {
-                tutor.advanceTime(tempoAttuale + secondi, autostrada); //ora faccio incrementale.
+                tutor.updateTime(tempoAttuale + secondi, autostrada); //ora faccio incrementale.
             }
         } 
         else if (comando == "stats") {
-            tutor.printStats(highway);
+            tutor.showStats(highway);
         } 
         else if (comando == "reset") {
             tutor.reset();
