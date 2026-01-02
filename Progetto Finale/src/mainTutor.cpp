@@ -61,7 +61,7 @@ int main() {
             }
         } 
         else if (comando == "stats") {
-            tutor.showStats(highway);
+            tutor.showStats();
         } 
         else if (comando == "reset") {
             tutor.reset();
