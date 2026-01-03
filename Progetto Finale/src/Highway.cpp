@@ -13,10 +13,10 @@ void Highway::restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::
         throw std::invalid_argument("Necessari almeno due varchi sull'autostrada.");
     if(svincoli.size() < 2)                                                                         //ci devono essere almeno due svincoli
         throw std::invalid_argument("Necessari almeno due svincoli sull'autostrada.");
-    if(varchi.front().km < svincoli.front().km)                                                      // primo elemento -> svincolo
-        throw std::invalid_argument("Il primo elemento dell'autostrada deve essere uno svincolo.");
-    if(varchi.back().km > svincoli.back().km)                                                        // ultimo elemento -> altro svincolo
-        throw std::invalid_argument("L'ultimo elemento dell'autostrada deve essere uno svincolo.");
+	if (!(svincoli.front().km < varchi.front().km))													//check svincolo prima del primo varco
+        throw std::invalid_argument("Serve almeno uno svincolo prima del primo varco.");
+    if (!(svincoli.back().km > varchi.back().km))													//check svincolo dopo l'ultimo varco
+        throw std::invalid_argument("Serve almeno uno svincolo dopo l'ultimo varco.");
 
     int i=0, j=0;
     while(i<varchi.size() && j<svincoli.size())      //check della minima distanza di 1 km tra varchi e svincoli
@@ -86,4 +86,17 @@ Highway::Highway(const std::string& filename)      //costruttore che legge il fi
     throw std::invalid_argument("Errore nell'apertura del file " + filename);  //gestione errore apertura file
 
     readFile(fileInput, varchi, svincoli);
+}
+
+
+double Highway::gateKm(int id) const
+{
+    for(const auto& varco : varchi)
+    {
+        if(varco.id == id)
+        {
+            return varco.km;
+        }
+    }
+    throw std::invalid_argument("ID varco non valido.");
 }
