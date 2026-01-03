@@ -1,7 +1,5 @@
 //Autore : Moratto Andrea appartenente al gruppo: "C++2.0" (collaboratori : Giacomo Dal Poz e Andrea Vadori)
 
-
-
 #include <iostream>
 #include <ctime>
 #include "../Include/Veicolo.h"
@@ -37,9 +35,8 @@ double tempoPassato(const std::vector<VarcoSvincolo>& varchi, int indexVarco, co
 }
 
 void outputGenerator(const VarcoSvincolo& hMap, std::ofstream& fileRuns, std::ofstream& filePassages)  //generazione degli output: file dei viaggi e file dei passaggi ai varchi
-
-
-double ingressoS=0;                   //inizializzo il tempo di ingresso a 0 secondi
+{
+    double ingressoS=0;                  //inizializzo il tempo di ingresso a 0 secondi
     for(int i=0; i<NUM_VEICOLI; i++)     //generazione di veicoli
     {
         int indiceIn=rand()%(hMap.getSvincoli().size()-1);                        	//id casuale del varco di ingresso
@@ -114,19 +111,3 @@ int main()
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
