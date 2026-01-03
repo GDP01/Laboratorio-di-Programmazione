@@ -31,21 +31,30 @@ std::string Veicolo::generatoreTg()      //generatore targa casuale
 }
 
 
-std::vector<std::pair<double, int>> Veicolo::generatoreSpeedG(double e, double u)   //generatore speedG(aspetti generali come tempo e velocita)  casuale
+//generatore speedG(aspetti generali come tempo e velocità) casuale
+std::vector<std::pair<double, int>> Veicolo::generatoreSpeedG(double e, double u) 
 {
     std::vector<std::pair<double, int>> tut;
-    double distanza=u-e; //km
-    while(distanza>0)
-    { 
-        int speed=randomInt(MIN_SPEED, MAX_SPEED); //km/h
-        double tempo=randomInt(5, 15); //minuti
-        distanza-=(double)(speed*tempo)/60.0; 
-        if(distanza<0)
-            tempo+=(double)(distanza*60)/speed; //serve per coprire esattamente la distanza rimanente
-        tut.push_back({tempo, speed});
+    double distanza = u - e; // km rimanenti
+
+    while (distanza > 0.0)
+    {
+        int speed = randomInt(MIN_SPEED, MAX_SPEED); // km/h
+        double tempo = randomInt(5, 15);             // minuti
+
+        double distanzaPercorribile = (speed * tempo) / 60.0; // km
+
+        if (distanzaPercorribile >= distanza) {
+            // ultimo tratto: percorro solo ciò che rimane
+            double tempoNecessario = (distanza * 60.0) / speed;
+            tut.push_back({tempoNecessario, speed});
+            break; // distanza esattamente coperta
+        } else {
+            // tratto completo
+            tut.push_back({tempo, speed});
+            distanza -= distanzaPercorribile;
+        }
     }
-    return tut;
-}
 
 
 Veicolo::Veicolo(double e, double u, int a, int b, double t, std::string d) : entroKm{e}, escoKm{u}, entroId{a}, escoId{b}, distanza{u-e}, ingressoS{t}, data{d}
@@ -65,7 +74,7 @@ std::ostream& operator<<(std::ostream& os, const Veicolo& v)        //overload d
     int i=0;
     while(i<v.getSpeedG().size())
     {
-        os << v.getSpeedG()[i].second << " " << v.getSpeedG()[i].first;   //velocita , tempo
+        os << v.getSpeedG()[i].second << " " << v.getSpeedG()[i].first;   //velocità , tempo
         if(i!=v.getSpeedG().size()-1)
             os << ", ";  
         i++;
