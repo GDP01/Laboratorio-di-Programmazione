@@ -40,8 +40,8 @@ void outputGenerator(const VarcoSvincolo& hMap, std::ofstream& fileRuns, std::of
         int indiceIn=rand()%(hMap.getSvincoli().size()-1);                        	//id casuale del varco di ingresso
         int indiceEx=rand()%(hMap.getSvincoli().size()-indiceIn-1)+indiceIn+1; 		//id casuale del varco di uscita
         
-        int entroKm=hMap.getSvincoli()[indiceIn].km;
-        int escoKm=hMap.getSvincoli()[indiceEx].km;
+        double entroKm=hMap.getSvincoli()[indiceIn].km;
+        double escoKm=hMap.getSvincoli()[indiceEx].km;
         ingressoS+=(double(rand()%95 + 5)/10.0);      //incremento il tempo di ingresso di un valore casuale tra 0.5 e 10 secondi
         std::string data = "2026-01-01";              //data fissa per tutti i veicoli
 
@@ -50,7 +50,7 @@ void outputGenerator(const VarcoSvincolo& hMap, std::ofstream& fileRuns, std::of
             fileRuns << v;  //scrittura del veicolo nel file dei viaggi
             
             int indexVarco=0;
-            while(hMap.getVarchi()[indexVarco].km<v.getEntroKm()) //trovo il primo varco dopo il punto di ingresso del veicolo
+            while (indexVarco < hMap.getVarchi().size() && hMap.getVarchi()[indexVarco].km < v.getEntroKm()) //trovo il primo varco dopo il punto di ingresso del veicolo
             {
                 indexVarco++;
             }
