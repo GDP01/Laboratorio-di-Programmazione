@@ -32,7 +32,7 @@ double tempoPassato(const std::vector<VarcoSvincolo>& varchi, int indexVarco, co
     return tempo;
 }
 
-void outputGenerator(const VarcoSvincolo& hMap, std::ofstream& fileRuns, std::ofstream& filePassages)  //generazione degli output: file dei viaggi e file dei passaggi ai varchi
+void outputGenerator(const Highway& hMap, std::ofstream& fileRuns, std::ofstream& filePassages)  //generazione degli output: file dei viaggi e file dei passaggi ai varchi
 {
     double ingressoS=0;                  //inizializzo il tempo di ingresso a 0 secondi
     for(int i=0; i<NUM_VEICOLI; i++)     //generazione di veicoli
