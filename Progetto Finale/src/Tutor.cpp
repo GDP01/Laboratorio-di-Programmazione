@@ -1,3 +1,5 @@
+//Autore : Andrea Vadori appartenente al gruppo: "C++2.0" (collaboratori : Giacomo Dal Poz e Andrea Moratto)
+
 #include "../Include/Tutor.h"
 #include "../Include/Highway.h"
 #include <iostream>
@@ -26,9 +28,11 @@ bool Tutor::init(const std::string& nomeFile){
   std::ifstream file(nomeFile);
   if(!file.is_open()){
       std::cerr<< "Impossibile aprire "<< nomeFile << std::endl;  
+      return false;
   }
 
   storicoTransiti.clear();
+    
   Transito transito; 
   //lettura file -> <varco><targa><tempo>
   while(file >> transito.idVarco >> transito.targa >> transito.timestamp){
