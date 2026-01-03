@@ -11,7 +11,7 @@ int main()
     srand(time(0));
     try{
     
-    Highway hMap("Highway.txt");      //creazione mappa autostradale
+    Highway hMap("../Include/Highway.txt");      //creazione mappa autostradale
         
     std::ofstream fileRuns("Runs.txt");  //file di output per i viaggi
     try{
