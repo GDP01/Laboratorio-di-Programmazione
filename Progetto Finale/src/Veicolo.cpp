@@ -40,11 +40,11 @@ std::vector<std::pair<double, int>> Veicolo::generatoreSpeedG(double e, double u
         int speed=randomInt(MIN_SPEED, MAX_SPEED); //km/h
         double tempo=randomInt(5, 15); //minuti
         distanza-=(double)(speed*tempo)/60.0; 
-        if(distance<0)
+        if(distanza<0)
             tempo+=(double)(distanza*60)/speed; //serve per coprire esattamente la distanza rimanente
-        v.push_back({tempo, speed});
+        tut.push_back({tempo, speed});
     }
-    return v;
+    return tut;
 }
 
 
