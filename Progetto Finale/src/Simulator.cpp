@@ -4,8 +4,8 @@
 
 #include <iostream>
 #include <ctime>
-#include "Veicolo.h"
-#include "Highway.h"
+#include "../Include/Veicolo.h"
+#include "../Include/Highway.h"
 
 static const int NUM_VEICOLI=10000;    //numero di veicoli da generare
 
