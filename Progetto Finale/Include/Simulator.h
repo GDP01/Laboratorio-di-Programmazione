@@ -14,7 +14,6 @@ double tempoPassato(const std::vector<VarcoSvincolo>& varchi, int indexVarco, co
 
 //genera i file Runs e Passages a partire dalla mappa autostradale.
 void outputGenerator(const Highway& hMap, std::ofstream& fileRuns, std::ofstream& filePassages);
-}
 
 #endif
 
