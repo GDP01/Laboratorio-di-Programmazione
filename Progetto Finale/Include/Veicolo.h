@@ -49,7 +49,7 @@ public:
         double getIngressoS() const { return ingressoS; }
         std::string getData() const { return data; }
         std::string getTg() const { return tg; }
-        std::vector<std::pair<double, int>> getSpeedG() const { return speedG; }
+        const std::vector<std::pair<double,int>>& getSpeedG() const { return speedG; } // evito di copiare inutilmente un vettore così grande
 
 };
 
