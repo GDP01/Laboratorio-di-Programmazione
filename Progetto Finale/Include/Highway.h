@@ -31,7 +31,7 @@ public:
         const std::vector<VarcoSvincolo>& getVarchi() const { return varchi; }          //getter varchi
         const std::vector<VarcoSvincolo>& getSvincoli() const { return svincoli; }    	//getter svincoli
 
-
+		double gateKm(int id) const;
 };
 
 #endif
