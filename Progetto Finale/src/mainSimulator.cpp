@@ -1,4 +1,4 @@
-//Autore : Moratto Andrea appartenente al gruppo: "C++2.0" (collaboratore : Giacomo Dal Poz e Andrea Vadori)
+//Autore : Moratto Andrea appartenente al gruppo: "C++2.0" (collaboratori : Giacomo Dal Poz e Andrea Vadori)
 
 #include <iostream>
 #include <ctime>
