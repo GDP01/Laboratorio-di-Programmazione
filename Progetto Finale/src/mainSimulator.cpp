@@ -2,8 +2,10 @@
 
 #include <iostream>
 #include <ctime>
-#include "../Include/Veicolo.h"
+
+#include "../src/Simulator.cpp"
 #include "../Include/Highway.h"
+#include "../Include/Veicolo.h"
 
 int main()
 {
