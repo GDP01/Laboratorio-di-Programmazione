@@ -18,12 +18,12 @@ void Highway::restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::
     if(varchi.back().km > svincoli.back().km)                                                        // ultimo elemento -> altro svincolo
         throw std::invalid_argument("L'ultimo elemento dell'autostrada deve essere uno svincolo.");
 
-    int i, j=0;
+    int i=0, j=0;
     while(i<varchi.size() && j<svincoli.size())      //check della minima distanza di 1 km tra varchi e svincoli
     {
         if(std::abs(varchi[i].km-svincoli[j].km)<1)
         {
-            throw std::invalid_argument("Distanza minima rispettata. ");
+            throw std::invalid_argument("Distanza minima non rispettata. ");
         }
         if(varchi[i].km<svincoli[j].km)   //porta avanti l'indice del varco se il varco si trova prima dello svincolo
             i++;
