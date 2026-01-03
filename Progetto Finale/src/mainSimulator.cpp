@@ -3,7 +3,6 @@
 #include <iostream>
 #include <ctime>
 
-#include "../Include/Simulator.h"
 #include "../Include/Highway.h"
 #include "../Include/Veicolo.h"
 
