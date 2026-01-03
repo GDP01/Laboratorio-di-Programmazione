@@ -11,9 +11,9 @@ int main()
     srand(time(0));
     try{
     
-    Highway hMap("../Include/Highway.txt");      //creazione mappa autostradale
+    Highway hMap("../Data/Highway.txt");      //creazione mappa autostradale
         
-    std::ofstream fileRuns("Runs.txt");  //file di output per i viaggi
+    std::ofstream fileRuns("../Data/Runs.txt");  //file di output per i viaggi
     try{
     if(!fileRuns.is_open())                                                     //gestione errore apertura file
         throw std::invalid_argument("Errore ! ");
@@ -24,7 +24,7 @@ int main()
         return -1;
     }
 
-    std::ofstream filePassages("Passages.txt");   //file di output per i passaggi ai varchi
+    std::ofstream filePassages("../Data/Passages.txt");   //file di output per i passaggi ai varchi
     try{
     if(!filePassages.is_open())                                                     //gestione errore apertura file
         throw std::invalid_argument("Errore ! ");
