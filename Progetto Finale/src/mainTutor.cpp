@@ -6,7 +6,7 @@
 
 // Funzione per convertire il tempo 
 double convertiTempo(const std::string& arg) {
-    if (arg.empty()) return 0.0;
+    if (arg.empty()) return -1.0;
 
     // Se l'ultimo carattere è 'm'
     if (arg.back() == 'm') {
