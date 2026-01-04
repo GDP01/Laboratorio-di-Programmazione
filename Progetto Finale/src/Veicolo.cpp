@@ -30,7 +30,6 @@ std::string Veicolo::generatoreTg()      //generatore targa casuale
     return tg;
 }
 
-
 //generatore speedG(aspetti generali come tempo e velocità) casuale
 std::vector<std::pair<double, int>> Veicolo::generatoreSpeedG(double e, double u) 
 {
@@ -56,6 +55,9 @@ std::vector<std::pair<double, int>> Veicolo::generatoreSpeedG(double e, double u
         }
     }
 
+    return tut;
+}
+
 
 Veicolo::Veicolo(double e, double u, int a, int b, double t, std::string d) : entroKm{e}, escoKm{u}, entroId{a}, escoId{b}, ingressoS{t}, distanza{u-e}, data{d}
 {
@@ -71,7 +73,7 @@ Veicolo::Veicolo(double e, double u, int a, int b, double t, std::string d) : en
 std::ostream& operator<<(std::ostream& os, const Veicolo& v)        //overload dell'operatore di output
 {
     os << v.getTg() << " " << v.getEntroId() << " " << v.getEscoId() << " "<< v.getIngressoS() << " "; //targa, id varco ingresso, id varco uscita, tempo di ingresso
-    int i=0;
+    size_t i=0;
     while(i<v.getSpeedG().size())
     {
         os << v.getSpeedG()[i].second << " " << v.getSpeedG()[i].first;   //velocità , tempo
