@@ -6,6 +6,10 @@
 #include "../Include/Highway.h"
 #include "../Include/Veicolo.h"
 
+void testaHighway(const std::string& path, const std::string& descrizione);
+double tempoPassato(const std::vector<VarcoSvincolo>& varchi, int indexVarco, const Veicolo& veicolo);
+void outputGenerator(const Highway& hMap, std::ofstream& fileRuns, std::ofstream& filePassages);
+
 int main()
 {
     srand(time(0));
