@@ -25,9 +25,9 @@ private:
         int entroId;                                                    //id del varco di ingresso  
         int escoId;                                                     //id del varco di uscita
         double ingressoS;                                               //secondi dal'inizio della simulazione
+        double distanza;                                                //km totali da percorrere
         std::string data;                                               //data di ingresso
         std::string tg;                                              	//targa del veicolo
-        double distanza;                                                   //km totali da percorrere
         std::vector<std::pair<double, int>> speedG;                  //<tempo in minuti, velocita  in km/h>
         int randomInt(int min, int max);
         std::string generatoreTg();                                                 //generatore targa casuale
