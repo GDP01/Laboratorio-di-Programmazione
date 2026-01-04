@@ -5,6 +5,17 @@
 
 static const int NUM_VEICOLI=10000;    //numero di veicoli da generare
 
+void testaHighway(const std::string& path, const std::string& descrizione) {
+    try {
+        Highway h(path);
+        std::cout << "Errore: " << descrizione << " non ha lanciato eccezione (file: " << path << ")\n";
+    } catch (const std::invalid_argument& e) {
+        std::cout << "Errore: " << descrizione << " -> " << e.what() << "\n";
+    } catch (const std::exception& e) {
+        std::cout << "Errore: " << descrizione
+                  << " -> eccezione diversa: " << e.what() << "\n";
+    }
+}
 
 double tempoPassato(const std::vector<VarcoSvincolo>& varchi, int indexVarco, const Veicolo& veicolo) //calcolo del tempo di passaggio al varco
 {
