@@ -1,7 +1,8 @@
 //Autore : Moratto Andrea appartenente al gruppo: "C++2.0" (collaboratori : Giacomo Dal Poz e Andrea Vadori)
 
-#include "../Include/Veicolo.h"
 #include "../Include/Highway.h"
+#include "../Include/Veicolo.h"
+
 
 static const int NUM_VEICOLI=10000;    //numero di veicoli da generare
 
@@ -22,14 +23,14 @@ double tempoPassato(const std::vector<VarcoSvincolo>& varchi, int indexVarco, co
     double tempo=veicolo.getIngressoS();  //secondi
     double distanza=varchi[indexVarco].km-veicolo.getEntroKm(); //km
     double distanzaCoperta=0;
-    int i=0;
+    size_t i=0;
     while(distanzaCoperta<distanza && i<veicolo.getSpeedG().size()) 
     {
         double distanzaPercorsa=(double)(veicolo.getSpeedG()[i].second*veicolo.getSpeedG()[i].first)/60; //km percorsi in questo segmento
         if(distanzaCoperta+distanzaPercorsa<=distanza)  //se il veicolo non supera la distanza del varco in questo segmento
         {
             tempo+=(double)(veicolo.getSpeedG()[i].first*60.0); //aumento il tempo con il tempo di questo segmento 
-            distanzaCoperta+=distanzaPercorsa;                  //aggiorno la distanza coperta
+            distanzaCoperta+=distanzaPercorsa;                      //aggiorno la distanza coperta
         }
         else
         {
@@ -53,14 +54,14 @@ void outputGenerator(const Highway& hMap, std::ofstream& fileRuns, std::ofstream
         
         double entroKm=hMap.getSvincoli()[indiceIn].km;
         double escoKm=hMap.getSvincoli()[indiceEx].km;
-        ingressoS+=(double(rand()%95 + 5)/10.0);      //incremento il tempo di ingresso di un valore casuale tra 0.5 e 10 secondi
-        std::string data = "2026-01-01";              //data fissa per tutti i veicoli
+        ingressoS+=(double(rand()%96 + 5)/10.0);      //incremento il tempo di ingresso di un valore casuale tra 0.5 e 10 secondi compresi
+        std::string data = "2026-01-01";                            //data fissa per tutti i veicoli
 
         try {     
             Veicolo v(entroKm, escoKm, hMap.getSvincoli()[indiceIn].id, hMap.getSvincoli()[indiceEx].id, ingressoS, data);     //creazione del veicolo
             fileRuns << v;  //scrittura del veicolo nel file dei viaggi
             
-            int indexVarco=0;
+            size_t indexVarco=0;
             while (indexVarco < hMap.getVarchi().size() && hMap.getVarchi()[indexVarco].km < v.getEntroKm()) //trovo il primo varco dopo il punto di ingresso del veicolo
             {
                 indexVarco++;
