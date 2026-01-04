@@ -57,14 +57,14 @@ std::vector<std::pair<double, int>> Veicolo::generatoreSpeedG(double e, double u
     }
 
 
-Veicolo::Veicolo(double e, double u, int a, int b, double t, std::string d) : entroKm{e}, escoKm{u}, entroId{a}, escoId{b}, distanza{u-e}, ingressoS{t}, data{d}
+Veicolo::Veicolo(double e, double u, int a, int b, double t, std::string d) : entroKm{e}, escoKm{u}, entroId{a}, escoId{b}, ingressoS{t}, distanza{u-e}, data{d}
 {
-    if(entroKm<0 || escoKm<0 || escoKm<entroKm || ingressoS<0 || entroId<0 || escoId<0 || entroId>escoId)   //possibili errori
+    if(entroKm<0 || escoKm<0 || escoKm<entroKm || ingressoS<0 || entroId<0 || escoId<0 || entroId>escoId) {  //possibili errori
         throw std::invalid_argument("Errore di entrata o uscita dall'autostrada nel tempo ");
-
-        tg=generatoreTg();
-
-        speedG=generatoreSpeedG(entroKm, escoKm);
+    }
+        
+    tg=generatoreTg();    
+    speedG=generatoreSpeedG(entroKm, escoKm);
 }
 
 
