@@ -5,17 +5,17 @@
 
 
 
-void Highway::restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::vector<VarcoSvincolo>& svincoli)  //controllo delle restrizioni
+void Highway::restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::vector<VarcoSvincolo>& svincoli, const std::string& filename)  //controllo delle restrizioni
 {
     if (varchi.size() < 2)
-        throw std::invalid_argument("Necessari almeno due varchi sull'autostrada."); // file Highway2.txt
+        throw std::invalid_argument("Errore nel file " + filename + ": Necessari almeno due varchi sull'autostrada."); // file Highway2.txt
     if (svincoli.size() < 2)
-        throw std::invalid_argument("Necessari almeno due svincoli sull'autostrada."); // file Highway3.txt
+        throw std::invalid_argument("Errore nel file " + filename + ": Necessari almeno due svincoli sull'autostrada."); // file Highway3.txt
     if (!(svincoli.front().km < varchi.front().km))
-        throw std::invalid_argument("Serve almeno uno svincolo prima del primo varco."); // file Highway4.txt
+        throw std::invalid_argument("Errore nel file " + filename + ": Serve almeno uno svincolo prima del primo varco."); // file Highway4.txt
     if (!(svincoli.back().km > varchi.back().km))
-        throw std::invalid_argument("Serve almeno uno svincolo dopo l'ultimo varco."); // file Highway5.txt
-    
+        throw std::invalid_argument("Errore nel file " + filename + ": Serve almeno uno svincolo dopo l'ultimo varco."); // file Highway5.txt
+
     // check distanza minima di 1 km tra ogni varco e svincolo
     size_t i=0, j=0; //uso size_t per evitare warning di conversione tra tipi
     while (i < varchi.size() && j < svincoli.size()) 
@@ -33,7 +33,6 @@ void Highway::restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::
 
 
 
-
 void Highway::idRiconoscimento(std::vector<VarcoSvincolo>& elementi)  //assegnazione degli id
 {
     for(size_t i=0; i<elementi.size(); i++) 
@@ -42,7 +41,9 @@ void Highway::idRiconoscimento(std::vector<VarcoSvincolo>& elementi)  //assegnaz
     }
 }
 
-void Highway::readFile(std::ifstream& fileInput, std::vector<VarcoSvincolo>& varchi, std::vector<VarcoSvincolo>& svincoli)  //lettura del file di input
+
+
+void Highway::readFile(std::ifstream& fileInput, std::vector<VarcoSvincolo>& varchi, std::vector<VarcoSvincolo>& svincoli, const std::string& filename)  //lettura del file di input
 {
     std::string line;
     while(std::getline(fileInput, line))  //legge tutte le linee del file di input
@@ -69,22 +70,27 @@ void Highway::readFile(std::ifstream& fileInput, std::vector<VarcoSvincolo>& var
         return s1.km < s2.km;
     });
     
-    
-    
-    restrizioniC(varchi, svincoli); //controllo delle restrizioni
+
+
+    restrizioniC(varchi, svincoli, filename); //controllo delle restrizioni
 
     idRiconoscimento(varchi);        // id ai varchi
     idRiconoscimento(svincoli);     // id agli svincoli
 
 }
+
+
+
 Highway::Highway(const std::string& filename)      //costruttore che legge il file di input
 {
     std::ifstream fileInput(filename);                   //apertura del file di input
     if(!fileInput.is_open())
     throw std::invalid_argument("Errore nell'apertura del file " + filename);  //gestione errore apertura file
 
-    readFile(fileInput, varchi, svincoli);
+    readFile(fileInput, varchi, svincoli, filename);  //lettura del file di input
 }
+
+
 
 double Highway::gateKm(int id) const
 {
