@@ -22,7 +22,7 @@ void Highway::restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::
     {
         if (std::abs(varchi[i].km - svincoli[j].km) < 1) 
         {
-            throw std::invalid_argument("Distanza minima non rispettata."); // file Highway6.txt
+            throw std::invalid_argument("Errore nel file " + filename + ": Distanza minima non rispettata."); // file Highway6.txt
         }
 
         // porta avanti l'indice del varco se il varco si trova prima dello svincolo
