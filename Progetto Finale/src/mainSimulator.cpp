@@ -6,7 +6,6 @@
 #include "../Include/Highway.h"
 #include "../Include/Veicolo.h"
 
-void testaHighway(const std::string& path, const std::string& descrizione);
 double tempoPassato(const std::vector<VarcoSvincolo>& varchi, int indexVarco, const Veicolo& veicolo);
 void outputGenerator(const Highway& hMap, std::ofstream& fileRuns, std::ofstream& filePassages);
 
@@ -14,14 +13,49 @@ int main()
 {
     srand(time(0));
 
-    //Test errori mappa autostradale
-    testaHighway(".../Highway2.txt", "Meno di 2 varchi");                       //creazione mappa autostradale - errore: meno di 2 varchi
-    testaHighway(".../Highway3.txt", "Meno di 2 svincoli");                     //creazione mappa autostradale - errore: meno di 2 svincoli
-    testaHighway(".../Highway4.txt", "Manca svincolo prima del primo varco");   //creazione mappa autostradale - errore: manca almeno uno svincolo prima del primo varco
-    testaHighway(".../Highway5.txt", "Manca svincolo dopo l'ultimo varco");     //creazione mappa autostradale - errore: manca almeno uno svincolo dopo l'ultimo varco
-    testaHighway(".../Highway6.txt", "Distanza minima non rispettata");         //creazione mappa autostradale - errore: distanza minima non rispettata
+    //Test eccezioni funzione restrizioniC di Highway.cpp - lettura mappe autostradali sbagliate
+    try {
+        Highway hMap2("../Data/Highway di test/Highway2.txt");
+    }
+    catch(const std::invalid_argument& e)
+    {
+        std::cerr << e.what() << std::endl; //errore: meno di 2 varchi
+    }
 
-    
+    try {
+        Highway hMap3("../Data/Highway di test/Highway3.txt");
+    }
+    catch(const std::invalid_argument& e)
+    {
+        std::cerr << e.what() << std::endl; //errore: meno di 2 svincoli
+    }
+
+    try {
+        Highway hMap4("../Data/Highway di test/Highway4.txt");
+    }
+    catch(const std::invalid_argument& e)
+    {
+        std::cerr << e.what() << std::endl; //errore: manca almeno uno svincolo prima del primo varco
+    }
+
+    try {
+        Highway hMap5("../Data/Highway di test/Highway5.txt");
+    }
+    catch(const std::invalid_argument& e)
+    {
+        std::cerr << e.what() << std::endl; //errore: manca almeno uno svincolo dopo l'ultimo varco
+    }
+
+    try {
+        Highway hMap6("../Data/Highway di test/Highway6.txt");
+    }
+    catch(const std::invalid_argument& e)
+    {
+        std::cerr << e.what() << std::endl; //errore: distanza minima non rispettata
+    }
+
+
+    //Creazione mappa autostradale corretta e generazione degli output
     try{
         
         Highway hMap("../Data/Highway.txt");      //creazione mappa autostradale
