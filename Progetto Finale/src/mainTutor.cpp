@@ -29,10 +29,10 @@ double convertiTempo(const std::string& arg) {
 }
 int main() {
     try {
-        Highway autostrada("../Data/Highway.txt");
+        Highway autostrada("Data/Highway.txt");
     
         Tutor tutor;
-        if (!tutor.init("../Data/Passages.txt")) {
+        if (!tutor.init("Data/Passages.txt")) {
             std::cerr << "Errore: impossibile caricare Passages.txt. Esegui prima il simulatore." << std::endl;
             return -1;
         }
