@@ -15,7 +15,7 @@ int main()
 
     //Test eccezioni funzione restrizioniC di Highway.cpp - lettura mappe autostradali sbagliate
     try {
-        Highway hMap2("../Data/Highway di test/Highway2.txt");
+        Highway hMap2("../Data/tester Highways/Highway2.txt");
     }
     catch(const std::invalid_argument& e)
     {
@@ -23,7 +23,7 @@ int main()
     }
 
     try {
-        Highway hMap3("../Data/Highway di test/Highway3.txt");
+        Highway hMap3("../Data/tester Highways/Highway3.txt");
     }
     catch(const std::invalid_argument& e)
     {
@@ -31,7 +31,7 @@ int main()
     }
 
     try {
-        Highway hMap4("../Data/Highway di test/Highway4.txt");
+        Highway hMap4("../Data/tester Highways/Highway4.txt");
     }
     catch(const std::invalid_argument& e)
     {
@@ -39,7 +39,7 @@ int main()
     }
 
     try {
-        Highway hMap5("../Data/Highway di test/Highway5.txt");
+        Highway hMap5("../Data/tester Highways/Highway5.txt");
     }
     catch(const std::invalid_argument& e)
     {
@@ -47,7 +47,7 @@ int main()
     }
 
     try {
-        Highway hMap6("../Data/Highway di test/Highway6.txt");
+        Highway hMap6("../Data/tester Highways/Highway6.txt");
     }
     catch(const std::invalid_argument& e)
     {
