@@ -16,44 +16,33 @@ int main()
     //Test eccezioni funzione restrizioniC di Highway.cpp - lettura mappe autostradali sbagliate
     try {
         Highway hMap2("Data/tester Highways/Highway2.txt");
-    }
-    catch(const std::invalid_argument& e)
-    {
+    } catch(const std::invalid_argument& e) {
         std::cerr << e.what() << std::endl; //errore: meno di 2 varchi
     }
 
     try {
         Highway hMap3("Data/tester Highways/Highway3.txt");
-    }
-    catch(const std::invalid_argument& e)
-    {
+    } catch(const std::invalid_argument& e) {
         std::cerr << e.what() << std::endl; //errore: meno di 2 svincoli
     }
 
     try {
         Highway hMap4("Data/tester Highways/Highway4.txt");
-    }
-    catch(const std::invalid_argument& e)
-    {
+    } catch(const std::invalid_argument& e) {
         std::cerr << e.what() << std::endl; //errore: manca almeno uno svincolo prima del primo varco
     }
 
     try {
         Highway hMap5("Data/tester Highways/Highway5.txt");
-    }
-    catch(const std::invalid_argument& e)
-    {
+    } catch(const std::invalid_argument& e) {
         std::cerr << e.what() << std::endl; //errore: manca almeno uno svincolo dopo l'ultimo varco
     }
 
     try {
         Highway hMap6("Data/tester Highways/Highway6.txt");
-    }
-    catch(const std::invalid_argument& e)
-    {
+    } catch(const std::invalid_argument& e) {
         std::cerr << e.what() << std::endl; //errore: distanza minima non rispettata
     }
-
 
     //Creazione mappa autostradale corretta e generazione degli output
     try{
