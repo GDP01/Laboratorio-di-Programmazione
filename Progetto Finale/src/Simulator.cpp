@@ -6,6 +6,8 @@
 
 static const int NUM_VEICOLI=10000;    //numero di veicoli da generare
 
+/*funzione di controllo dei file autostrade
+
 void testaHighway(const std::string& path, const std::string& descrizione) {
     try {
         Highway h(path);
@@ -17,6 +19,7 @@ void testaHighway(const std::string& path, const std::string& descrizione) {
                   << " -> eccezione diversa: " << e.what() << "\n";
     }
 }
+*/
 
 double tempoPassato(const std::vector<VarcoSvincolo>& varchi, int indexVarco, const Veicolo& veicolo) //calcolo del tempo di passaggio al varco
 {
