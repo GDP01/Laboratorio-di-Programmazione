@@ -53,6 +53,8 @@ int main()
         try{
         if(!fileRuns.is_open())                                                     //gestione errore apertura file
             throw std::invalid_argument("Errore ! ");
+
+        std::cout << "File Passages.txt generato con successo." << std::endl;
         }
         catch(const std::invalid_argument& e)
         {
@@ -64,6 +66,8 @@ int main()
         try{
         if(!filePassages.is_open())                                                     //gestione errore apertura file
             throw std::invalid_argument("Errore ! ");
+
+        std::cout << "File Passages.txt generato con successo." << std::endl;
         }
         catch(const std::invalid_argument& e)
         {
