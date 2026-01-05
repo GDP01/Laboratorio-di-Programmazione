@@ -15,7 +15,7 @@ int main()
 
     //Test eccezioni funzione restrizioniC di Highway.cpp - lettura mappe autostradali sbagliate
     try {
-        Highway hMap2("../Data/tester Highways/Highway2.txt");
+        Highway hMap2("Data/tester Highways/Highway2.txt");
     }
     catch(const std::invalid_argument& e)
     {
@@ -23,7 +23,7 @@ int main()
     }
 
     try {
-        Highway hMap3("../Data/tester Highways/Highway3.txt");
+        Highway hMap3("Data/tester Highways/Highway3.txt");
     }
     catch(const std::invalid_argument& e)
     {
@@ -31,7 +31,7 @@ int main()
     }
 
     try {
-        Highway hMap4("../Data/tester Highways/Highway4.txt");
+        Highway hMap4("Data/tester Highways/Highway4.txt");
     }
     catch(const std::invalid_argument& e)
     {
@@ -39,7 +39,7 @@ int main()
     }
 
     try {
-        Highway hMap5("../Data/tester Highways/Highway5.txt");
+        Highway hMap5("Data/tester Highways/Highway5.txt");
     }
     catch(const std::invalid_argument& e)
     {
@@ -47,7 +47,7 @@ int main()
     }
 
     try {
-        Highway hMap6("../Data/tester Highways/Highway6.txt");
+        Highway hMap6("Data/tester Highways/Highway6.txt");
     }
     catch(const std::invalid_argument& e)
     {
@@ -58,9 +58,9 @@ int main()
     //Creazione mappa autostradale corretta e generazione degli output
     try{
         
-        Highway hMap("../Data/Highway.txt");      //creazione mappa autostradale
+        Highway hMap("Data/Highway.txt");      //creazione mappa autostradale
             
-        std::ofstream fileRuns("../Data/Runs.txt");  //file di output per i viaggi
+        std::ofstream fileRuns("Data/Runs.txt");  //file di output per i viaggi
         try{
         if(!fileRuns.is_open())                                                     //gestione errore apertura file
             throw std::invalid_argument("Errore ! ");
@@ -71,7 +71,7 @@ int main()
             return -1;
         }
     
-        std::ofstream filePassages("../Data/Passages.txt");   //file di output per i passaggi ai varchi
+        std::ofstream filePassages("Data/Passages.txt");   //file di output per i passaggi ai varchi
         try{
         if(!filePassages.is_open())                                                     //gestione errore apertura file
             throw std::invalid_argument("Errore ! ");
