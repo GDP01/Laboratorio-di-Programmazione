@@ -2,6 +2,6 @@ README PROGETTO FINALE GRUPPO "C++ 2.0"
 
 @Autori:  - Andrea Moratto : La  mia difficoltà principale è stata gestire correttamente il tempo di percorrenza, gestendo a sua volta profili di velocità e il caso in cui un varco cada all’interno di un segmento. 
 Ho inoltre prestato attenzione alla coerenza delle unità di misura e alla generazione di veicoli sempre validi, gestendo gli errori senza interrompere la simulazione.
-          - Andrea Vadori
+          - Andrea Vadori: Mi sono occupato dell'implementazione del sistema Tutor nel suo complesso dalla lettura del log di output del simulatore al calcolo delle statistiche.La difficoltà principale è stata la gestione corretta della coppia ingresso-uscita per il calcolo e la loro conversione. Come struttura dati ho deciso di implementare unordered_map dato che il suo tempo di accesso è costante (O(1)). 
           - Giacomo Dal Poz: Il mio ruolo all’interno del gruppo è stato principalmente quello di maintainer del progetto, occupandomi della gestione e dell’organizzazione dei file, della correzione dei bug e della configurazione del sistema di build tramite CMake.
                              La difficoltà maggiore che ho riscontrato è stata comprendere e far funzionare correttamente CMake in ambiente Windows; una volta risolti questi problemi, ho comunque verificato il corretto funzionamento del progetto anche sulla macchina virtuale del laboratorio, come richiesto.
