@@ -56,6 +56,7 @@ void Tutor::updateTime(double nuovoIstante, const Highway& autostrada){
         //aggiornamento statistiche 
         statisticheVarchi[transitoCorrente.idVarco]++;
 
+        //uso auto per aiutarmi con i tipi di dati
         auto v = veicoliAttivi.find(transitoCorrente.targa);
         if (v != veicoliAttivi.end()){
           // Già tracciato recupero dati ultimo passaggio
@@ -95,6 +96,8 @@ void Tutor::showStats() {
     std::cout << "Veicoli sanzionati finora: " << conteggioMulte << std::endl;
     
     double mediaGlobale = (conteggioMisurazioni > 0) ? (sommaVelocita / conteggioMisurazioni) : 0.0;
+
+    //fixed-setprecision(2) per avere la parte decimale della velocità a due cifre 
     std::cout << "Velocita' media globale rilevata: " << std::fixed << std::setprecision(2) << mediaGlobale << " km/h" << std::endl;
 
     std::cout << "Traffico per varco:" << std::endl;
