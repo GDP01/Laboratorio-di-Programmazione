@@ -13,7 +13,7 @@ double convertiTempo(const std::string& arg) {
         // Rimuove e converte in minuti -> secondi
         std::string parteNum = arg.substr(0, arg.length() - 1);
         try {
-            double minuti = std::stod(parteNum);
+            double minuti = std::stod(parteNum); //da string a double
             return minuti * 60.0;
         } catch (...) {
             return -1.0; // Errore parsing
@@ -27,19 +27,34 @@ double convertiTempo(const std::string& arg) {
         }
     }
 }
+
+// Funzione per stampare il menu
+void stampaMenu() {
+    std::cout << "COMANDI DISPONIBILI\n"
+              << "  set_time <t> : Avanza il tempo (es: 120, 10m)\n"
+              << "  stats        : Mostra statistiche attuali\n"
+              << "  reset        : Riavvia il sistema da zero\n"
+              << "  help         : Mostra l'elenco comandi\n"
+              << "  exit         : Chiudi il programma\n"
+              << std::endl;
+}
+
 int main() {
     try {
+        //Carico autostrada
         Highway autostrada("Data/Highway.txt");
-    
+
+        //Inizializzazione tutor
         Tutor tutor;
         if (!tutor.init("Data/Passages.txt")) {
             std::cerr << "Errore: impossibile caricare Passages.txt. Esegui prima il simulatore." << std::endl;
             return -1;
         }
     
-        std::cout << "Sistema Tutor Avviato. Comandi disponibili: set_time <t>, stats, reset, exit" << std::endl;
+        std::cout << "Sistema Tutor Avviato."<< std::endl;
+        stampaMenu();
     
-        //Comandi
+        //Loop comandi
         std::string comando;
         while (std::cin >> comando) {
             if (comando == "exit") {
@@ -57,6 +72,7 @@ int main() {
                 if (secondi < 0) {
                     std::cout << "Formato tempo non valido." << std::endl;
                 } else {
+                    //Comando fa la somma del tempo attuale con il tempo dato in input.
                     tutor.updateTime(tutor.getTempoAttuale() + secondi, autostrada);
                 }
             }
@@ -66,6 +82,9 @@ int main() {
             else if (comando == "reset") {
                 tutor.reset();
             } 
+            else if (comando == "help"){
+                stampaMenu();
+            }
             else {
                 std::cout << "Comando sconosciuto." << std::endl;
             }
