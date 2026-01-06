@@ -1,4 +1,5 @@
-//@author : Andrea Vadori appartenente al gruppo: "C++2.0" (collaboratori : Giacomo Dal Poz e Andrea Moratto)
+//Autore : Andrea Vadori appartenente al gruppo: "C++2.0" (collaboratori : Giacomo Dal Poz e Andrea Moratto)
+
 #include "../Include/Tutor.h"
 #include "../Include/Highway.h"
 #include <iostream>
