@@ -1,4 +1,5 @@
-//@author: Andrea Vadori
+//Autore : Andrea Vadori appartenente al gruppo: "C++2.0" (collaboratori : Giacomo Dal Poz e Andrea Moratto)
+
 #ifndef TUTOR_H
 #define TUTOR_H
 
