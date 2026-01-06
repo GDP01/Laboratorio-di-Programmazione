@@ -14,7 +14,6 @@ Tutor::Tutor() {
 void Tutor::reset(){
   veicoliAttivi.clear();
   statisticheVarchi.clear();
-  //storicoTransiti.clear(); //capire se serve anche questo o no
 
   indice=0;
   tempoAttuale = 0.0;
