@@ -90,21 +90,42 @@ void Tutor::updateTime(double nuovoIstante, const Highway& autostrada){
       }
       tempoAttuale = nuovoIstante;
       std::cout << "Tempo aggiornato a: " << tempoAttuale << "s" << std::endl;
-}  
+}
+
+
+//showStats stampa un riepilogo facendo un sorting dei varchi
 void Tutor::showStats() {
     std::cout << "Veicoli sanzionati finora: " << conteggioMulte << std::endl;
-    
-    double mediaGlobale = (conteggioMisurazioni > 0) ? (sommaVelocita / conteggioMisurazioni) : 0.0;
 
-    //fixed-setprecision(2) per avere la parte decimale della velocità a due cifre 
+    double mediaGlobale = 0.0;
+    if (conteggioMisurazioni > 0) {
+        mediaGlobale = sommaVelocita / conteggioMisurazioni;
+    }
+
+    //fixed-setprecision(2) per avere la parte decimale della velocità a due cifre
     std::cout << "Velocita' media globale rilevata: " << std::fixed << std::setprecision(2) << mediaGlobale << " km/h" << std::endl;
 
     std::cout << "Traffico per varco:" << std::endl;
-    // Contatori dei varchi
-    for (const auto& pair : statisticheVarchi) {
-        // Calcolo veicoli al minuto, evito divisione per zero
-        double veicoliPerMinuto = (tempoAttuale > 0) ? (pair.second / (tempoAttuale / 60.0)) : 0.0;
-        
-        std::cout << "  Varco " << pair.first << ": " << pair.second << " veicoli ("<< veicoliPerMinuto << " veic/min)" << std::endl;
+
+    //copia in un vettore per poter ordinare
+    std::vector<std::pair<int, int>> varchiOrdinati(
+        statisticheVarchi.begin(),
+        statisticheVarchi.end()
+    );
+
+    //ordina in senso crescente in base all'id del varco
+    std::sort(varchiOrdinati.begin(), varchiOrdinati.end(),
+              [](const auto& a, const auto& b) {
+                  return a.first < b.first;
+              });
+
+    for (const auto& pair : varchiOrdinati) {
+        double veicoliPerMinuto = 0.0;
+
+        if (tempoAttuale > 0) {
+            veicoliPerMinuto = pair.second / (tempoAttuale / 60.0);
+        }
+
+        std::cout << "  Varco " << pair.first << ": " << pair.second << " veicoli (" << veicoliPerMinuto << " veic/min)" << std::endl;
     }
 }
