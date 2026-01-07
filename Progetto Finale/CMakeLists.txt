@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(ProgettoTutorAutostrade VERSION 1.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 14) #uso questo standard perchè altrimenti sort non viene accettato
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -47,6 +47,7 @@ add_custom_command(TARGET tutor POST_BUILD
           $<TARGET_FILE_DIR:tutor>/Data
 
 )
+
 
 
 
