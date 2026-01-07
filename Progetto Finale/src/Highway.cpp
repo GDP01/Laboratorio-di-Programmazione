@@ -8,13 +8,13 @@
 void Highway::restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::vector<VarcoSvincolo>& svincoli, const std::string& filename)  //controllo delle restrizioni
 {
     if (varchi.size() < 2)
-        throw std::invalid_argument("Errore nel file " + filename + ": Necessari almeno due varchi sull'autostrada."); // file Highway2.txt
+        throw std::invalid_argument("Necessari almeno due varchi sull'autostrada."); // file Highway2.txt
     if (svincoli.size() < 2)
-        throw std::invalid_argument("Errore nel file " + filename + ": Necessari almeno due svincoli sull'autostrada."); // file Highway3.txt
+        throw std::invalid_argument("Necessari almeno due svincoli sull'autostrada."); // file Highway3.txt
     if (!(svincoli.front().km < varchi.front().km))
-        throw std::invalid_argument("Errore nel file " + filename + ": Serve almeno uno svincolo prima del primo varco."); // file Highway4.txt
+        throw std::invalid_argument("Serve almeno uno svincolo prima del primo varco."); // file Highway4.txt
     if (!(svincoli.back().km > varchi.back().km))
-        throw std::invalid_argument("Errore nel file " + filename + ": Serve almeno uno svincolo dopo l'ultimo varco."); // file Highway5.txt
+        throw std::invalid_argument("Serve almeno uno svincolo dopo l'ultimo varco."); // file Highway5.txt
 
     // check distanza minima di 1 km tra ogni varco e svincolo
     size_t i=0, j=0; //uso size_t per evitare warning di conversione tra tipi
