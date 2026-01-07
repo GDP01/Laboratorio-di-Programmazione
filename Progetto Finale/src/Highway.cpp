@@ -43,7 +43,7 @@ void Highway::idRiconoscimento(std::vector<VarcoSvincolo>& elementi)  //assegnaz
 
 
 
-void Highway::readFile(std::ifstream& fileInput, std::vector<VarcoSvincolo>& varchi, std::vector<VarcoSvincolo>& svincoli, const std::string& filename)  //lettura del file di input
+void Highway::readFile(std::ifstream& fileInput, std::vector<VarcoSvincolo>& varchi, std::vector<VarcoSvincolo>& svincoli)  //lettura del file di input
 {
     std::string line;
     while(std::getline(fileInput, line))  //legge tutte le linee del file di input
