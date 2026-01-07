@@ -21,9 +21,9 @@ private:
     std::vector<VarcoSvincolo> varchi;//varchi
 	std::vector<VarcoSvincolo> svincoli;     //svincoli 
 	    
-        void restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::vector<VarcoSvincolo>& svincoli, const std::string& filename);      		//controllo delle restrizioni
+        void restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::vector<VarcoSvincolo>& svincoli);      									//controllo delle restrizioni
         void idRiconoscimento(std::vector<VarcoSvincolo>& elementi);                                                          							//assegnazione degli id
-        void readFile(std::ifstream& fileInput, std::vector<VarcoSvincolo>& varchi, std::vector<VarcoSvincolo>& svincoli, const std::string& filename); //lettura del file di input
+        void readFile(std::ifstream& fileInput, std::vector<VarcoSvincolo>& varchi, std::vector<VarcoSvincolo>& svincoli); 								//lettura del file di input
 
 public:
     
