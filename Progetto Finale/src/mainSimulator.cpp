@@ -68,13 +68,13 @@ int main()
 
         std::ofstream fileRuns("Data/Runs.txt", std::ios::trunc); //file di output per i viaggi. std::ios::trunc sovrascrive il file già presente (lo fa già di default ofstream, ma lo esplicito per chiarezza)
         if (!fileRuns) {
-            std::cerr << "Errore: impossibile creare Data/Runs.txt\n";
+            std::cerr << "Errore: impossibile creare Runs.txt\n";
             return -1;
         }
 
         std::ofstream filePassages("Data/Passages.txt", std::ios::trunc); //file di output per i passaggi ai varchi
         if (!filePassages) {
-            std::cerr << "Errore: impossibile creare Data/Passages.txt\n";
+            std::cerr << "Errore: impossibile creare Passages.txt\n";
             return -1;
         }
 
