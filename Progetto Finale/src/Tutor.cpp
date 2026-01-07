@@ -114,7 +114,7 @@ void Tutor::showStats() {
     );
 
     //ordina in senso crescente in base all'id del varco
-    std::sort(varchiOrdinati.begin(), varchiOrdinati.end(), [](const auto& a, const auto& b) {
+    std::sort(varchiOrdinati.begin(), varchiOrdinati.end(), [](const std::pair<int,int>& a, const std::pair<int,int>& b) {
                   return a.first < b.first;
               });
 
