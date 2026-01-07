@@ -10,11 +10,11 @@ static const int NUM_VEICOLI=10000;    //numero di veicoli da generare
 void testaHighway(const std::string& path, const std::string& filename) {
     try {
         Highway h(path);
-        std::cout << "Errore: " << filename << " non ha lanciato eccezione (file: " << path << ")\n";
+        std::cout << "Errore in " << filename << " non ha lanciato eccezione (file: " << path << ")\n";
     } catch (const std::invalid_argument& e) {
-        std::cout << "Errore: " << filename << " -> " << e.what() << "\n";
+        std::cout << "Errore in " << filename << " -> " << e.what() << "\n";
     } catch (const std::exception& e) {
-        std::cout << "Errore: " << filename
+        std::cout << "Errore in " << filename
                   << " -> eccezione diversa: " << e.what() << "\n";
     }
 }
