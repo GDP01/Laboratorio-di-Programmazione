@@ -5,7 +5,7 @@
 
 
 
-void Highway::restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::vector<VarcoSvincolo>& svincoli, const std::string& filename)  //controllo delle restrizioni
+void Highway::restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::vector<VarcoSvincolo>& svincoli)  //controllo delle restrizioni
 {
     if (varchi.size() < 2)
         throw std::invalid_argument("Necessari almeno due varchi sull'autostrada."); // file Highway2.txt
@@ -22,7 +22,7 @@ void Highway::restrizioniC(const std::vector<VarcoSvincolo>& varchi, const std::
     {
         if (std::abs(varchi[i].km - svincoli[j].km) < 1) 
         {
-            throw std::invalid_argument("Errore nel file " + filename + ": Distanza minima non rispettata."); // file Highway6.txt
+            throw std::invalid_argument("Distanza minima non rispettata."); // file Highway6.txt
         }
 
         // porta avanti l'indice del varco se il varco si trova prima dello svincolo
@@ -72,7 +72,7 @@ void Highway::readFile(std::ifstream& fileInput, std::vector<VarcoSvincolo>& var
     
 
 
-    restrizioniC(varchi, svincoli, filename); //controllo delle restrizioni
+    restrizioniC(varchi, svincoli); //controllo delle restrizioni
 
     idRiconoscimento(varchi);        // id ai varchi
     idRiconoscimento(svincoli);     // id agli svincoli
