@@ -87,7 +87,7 @@ Highway::Highway(const std::string& filename)      //costruttore che legge il fi
     if(!fileInput.is_open())
     throw std::invalid_argument("Errore nell'apertura del file " + filename);  //gestione errore apertura file
 
-    readFile(fileInput, varchi, svincoli, filename);  //lettura del file di input
+    readFile(fileInput, varchi, svincoli);  //lettura del file di input
 }
 
 
