@@ -6,20 +6,18 @@
 
 static const int NUM_VEICOLI=10000;    //numero di veicoli da generare
 
-/*funzione di controllo dei file autostrade
-
-void testaHighway(const std::string& path, const std::string& descrizione) {
+//funzione di controllo dei file autostrade
+void testaHighway(const std::string& path, const std::string& filename) {
     try {
         Highway h(path);
-        std::cout << "Errore: " << descrizione << " non ha lanciato eccezione (file: " << path << ")\n";
+        std::cout << "Errore: " << filename << " non ha lanciato eccezione (file: " << path << ")\n";
     } catch (const std::invalid_argument& e) {
-        std::cout << "Errore: " << descrizione << " -> " << e.what() << "\n";
+        std::cout << "Errore: " << filename << " -> " << e.what() << "\n";
     } catch (const std::exception& e) {
-        std::cout << "Errore: " << descrizione
+        std::cout << "Errore: " << filename
                   << " -> eccezione diversa: " << e.what() << "\n";
     }
 }
-*/
 
 double tempoPassato(const std::vector<VarcoSvincolo>& varchi, int indexVarco, const Veicolo& veicolo) //calcolo del tempo di passaggio al varco
 {
